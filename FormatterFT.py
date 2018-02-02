@@ -20,7 +20,8 @@ class QueryFormatterFT(unittest.TestCase):
         THEN :trans - to \- in query str
         """
         ret = self.formatter.translate("HellO-World")
-        self.assertEqual("hello\-world", ret)
+        self.assertEqual("hello\\-world", ret)
+
 
     def test_repalce_dish(self):
         pass
