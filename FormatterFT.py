@@ -10,10 +10,20 @@ class QueryFormatterFT(unittest.TestCase):
         """
         GIVEN:query str with Upper chars
         WHEN :call translate interface
-        THAN :translate all Upper chars to lower in query str
+        THEN :translate all Upper chars to lower in query str
         """
         ret = self.formatter.translate("HellO")
         self.assertEqual("hello", ret)
+        """
+        GIVEN:query str with -
+        WHEN :call translate interface
+        THEN :trans - to \- in query str
+        """
+        ret = self.formatter.translate("HellO-World")
+        self.assertEqual("hello\-world", ret)
+
+    def test_repalce_dish(self):
+        pass
 
 
 if __name__ == "__main__":
