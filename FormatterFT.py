@@ -36,15 +36,15 @@ class QueryFormatterFT(unittest.TestCase):
             ret = self.formatter.translate(data['INPUT'])
             self.assertEqual(data['EXPECT'], ret)
 
-
     def test_query_str_has_been_replaced(self):
         """
         GEVEN:query str with \\-
         WHEN :call trnaslate interface
         THEN : - will not replace
         """
-        ret = self.formatter.translate("hello\\-world")
-        self.assertEqual("hello\\-world",ret)
+        for data in TestData['HAS_BEEN_REPLACED']:
+            ret = self.formatter.translate(data['INPUT'])
+            self.assertEqual(data['EXPECT'], ret)
 
 
 if __name__ == "__main__":
