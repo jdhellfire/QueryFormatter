@@ -1,3 +1,3 @@
 class QueryFormatter(object):
     def translate(self, quer_str):
-        return "hello"
+        return  quer_str.lower()
