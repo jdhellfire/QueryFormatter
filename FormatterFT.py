@@ -1,6 +1,6 @@
 import unittest
 from Formatter import QueryFormatter
-
+from FTData import TestData
 
 class QueryFormatterFT(unittest.TestCase):
     def setUp(self):
@@ -14,17 +14,16 @@ class QueryFormatterFT(unittest.TestCase):
         """
         ret = self.formatter.translate("HellO")
         self.assertEqual("hello", ret)
+
+    def test_repalce_dish(self):
         """
         GIVEN:query str with -
         WHEN :call translate interface
         THEN :trans - to \- in query str
         """
-        ret = self.formatter.translate("HellO-World")
-        self.assertEqual("hello\\-world", ret)
-
-
-    def test_repalce_dish(self):
-        pass
+        for data in TestData['REPLACE_DISH']:
+            ret = self.formatter.translate(data['INPUT'])
+            self.assertEqual(data['EXPECT'], ret)
 
 
 if __name__ == "__main__":
