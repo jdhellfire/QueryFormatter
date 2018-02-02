@@ -32,8 +32,9 @@ class QueryFormatterFT(unittest.TestCase):
         WEHN : call translate interface
         THEN : not translate - in query str
         """
-        ret = self.formatter.translate("\"HellO-World\"")
-        self.assertEqual("\"hello-world\"", ret)
+        for data in TestData["NO_REPLACE_DISH"]:
+            ret = self.formatter.translate(data['INPUT'])
+            self.assertEqual(data['EXPECT'], ret)
 
 
 if __name__ == "__main__":
