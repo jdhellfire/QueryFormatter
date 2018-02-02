@@ -2,6 +2,7 @@ import unittest
 from Formatter import QueryFormatter
 from FTData import TestData
 
+
 class QueryFormatterFT(unittest.TestCase):
     def setUp(self):
         self.formatter = QueryFormatter()
@@ -24,6 +25,15 @@ class QueryFormatterFT(unittest.TestCase):
         for data in TestData['REPLACE_DISH']:
             ret = self.formatter.translate(data['INPUT'])
             self.assertEqual(data['EXPECT'], ret)
+
+    def test_query_str_with_dish_and_no_replace_secen(self):
+        """
+        GEVEN:query str with - and start with " and end with "
+        WEHN : call translate interface
+        THEN : not translate - in query str
+        """
+        ret = self.formatter.translate("\"HellO-World\"")
+        self.assertEqual("\"hello-world\"", ret)
 
 
 if __name__ == "__main__":
